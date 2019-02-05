@@ -2,11 +2,13 @@ library(shiny)
 library(haven)
 library(mice)
 library(ggplot2)
+library(gganimate)
+library(shinycssloaders)
 
 # Define UI  ----
 ui <- fluidPage(
   
-  titlePanel("Simple Imputation methods"),
+  titlePanel("Multiple Imputation"),
   
   # Sidebarpanel
   sidebarLayout(
@@ -15,11 +17,12 @@ ui <- fluidPage(
     
     # Input: Selector variable to plot  ----
     selectInput("Method", "Imputation Method", 
-                c("Full dataset (without missings)", "Complete Case Analysis", 
-                  "Mean" = "mean",
+                c("Mean" = "mean",
                   "Single Regression" = "norm.predict",
-                  "Single Stochastic Regression" = "norm",
                   "Predictive Mean Matching" = "pmm")),
+    
+    numericInput("imp", "Imputations:", 1, min = 1, max = 100),
+    numericInput("niter", "Iterations:", 5, min = 1, max = 100),
     
     tableOutput("table1")
     
@@ -28,14 +31,8 @@ ui <- fluidPage(
   # Main panel for displaying outputs ----
   mainPanel(
     
-    h3("Imputed values for the Tampa scale variable"),
-    plotOutput("plot2"),
-    h3("Regression line in completed data"),
-    plotOutput("plot1"),
-    
-   
-    h3("Linear regression model in the Completed data"),
-    verbatimTextOutput("model1")
+    h3("Convergence plot"),
+    withSpinner(imageOutput("plot1"), type = 5)
     
   )
 )
