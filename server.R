@@ -739,35 +739,35 @@ server <- function(input, output, session) {
       kable_styling(bootstrap_options = "striped", full_width = F, position = "left") 
   }
   
-  output$plot1 <- renderImage({ 
-  outfile <- tempfile(fileext='.gif')
+  #output$plot1 <- renderImage({ 
+  #outfile <- tempfile(fileext='.gif')
     
-  p <- ggplot(selectedData1(), aes(Iteration, Imputed, group = Impnr)) +
-      scale_x_continuous(breaks = seq(0, 20, by = 1)) + 
-      geom_line(aes(colour=rep(c(1:input$imp), each=input$niter))) +
-      geom_segment(aes(xend = input$niter, yend = Imputed), linetype = 2, colour = 'grey') + 
-      geom_point(size = 2) + 
-      geom_text(aes(x = input$niter, label = Imputed, hjust = 0)) + 
-      transition_reveal(Iteration) + ease_aes('cubic-in-out') +
-      coord_cartesian(clip = 'off') + 
-      labs(title = "Multiple Imputation Convergence plot", 
-           y = "Mean Imputed", x="Iteration number") + 
-      theme(legend.position="none") #theme_minimal() #+ 
+  #p <- ggplot(selectedData1(), aes(Iteration, Imputed, group = Impnr)) +
+  #    scale_x_continuous(breaks = seq(0, 20, by = 1)) + 
+  #    geom_line(aes(colour=rep(c(1:input$imp), each=input$niter))) +
+  #    geom_segment(aes(xend = input$niter, yend = Imputed), linetype = 2, colour = 'grey') + 
+  #    geom_point(size = 2) + 
+  #    geom_text(aes(x = input$niter, label = Imputed, hjust = 0)) + 
+  #    transition_reveal(Iteration) + ease_aes('cubic-in-out') +
+  #    coord_cartesian(clip = 'off') + 
+  #    labs(title = "Multiple Imputation Convergence plot", 
+  #         y = "Mean Imputed", x="Iteration number") + 
+  #    theme(legend.position="none") #theme_minimal() #+ 
     #theme(plot.margin = margin(5.5, 40, 5.5, 5.5))
   
   #animate(p, duration=1000) 
-  anim_save("outfile.gif", animate(p, p, duration=20, fps = 10)) # New
+  #anim_save("images/outfile.gif", animate(p, p, duration=20, fps = 10)) # New
   
   # Return a list containing the filename
-  list(src = "outfile.gif",
-       contentType = 'image/gif',
-        width = 500,
-        height = 400
-       # alt = "This is alternate text"
-  )}, 
+  #list(src = "images/outfile.gif",
+  #     contentType = 'image/gif',
+  #      width = 500,
+  #      height = 400
+  #     # alt = "This is alternate text"
+  #)} 
   
-  deleteFile = TRUE
+  #deleteFile = TRUE
   
-  )}
+  #)}
     
-  
+}

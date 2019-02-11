@@ -1,9 +1,9 @@
 library(shiny)
 library(haven)
 library(mice)
-library(ggplot2)
+#library(ggplot2)
 library(gganimate)
-library(shinycssloaders)
+#library(shinycssloaders)
 library(kableExtra)
 
 # Define UI  ----
@@ -36,8 +36,8 @@ ui <- fluidPage(
   # Main panel for displaying outputs ----
   mainPanel(
     
-    h3("Convergence plot .... may take a while"),
-    withSpinner(imageOutput("plot1"), type = 5),
+    h3("Convergence plot"),
+    img(src="outfile.gif", height = 400, width = 500),
     
     tableOutput("table2")
     

@@ -1,0 +1,13 @@
+name: mianimate
+title: mianimate
+username:
+account: mwheymans
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 706698
+bundleId: 1868918
+url: https://mwheymans.shinyapps.io/mianimate/
+when: 1549888944.97725
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 2-6-2019 Regression Imputation.R|mice_function.R|outfile.gif
